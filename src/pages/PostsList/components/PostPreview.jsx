@@ -1,14 +1,28 @@
-const PostPreview = ( { post } ) => {
-    // ma zwrocic preview ilosc likeow 2 pierwsze linijki tekstu i przycisk read more
-    //  (component list z ant design wersja 4) https://ant.design/
+import { LikeOutlined } from '@ant-design/icons';
+import { List, Space } from 'antd';
+import React from 'react';
+  
+const IconText = ({ icon, text }) => (
+    <Space>
+      {React.createElement(icon)}
+      {text}
+    </Space>
+);
+const PostPreview = ( { data } ) => {
     return (
-        <div>
-            <div>{ post.title }</div>
-            <div>{ post.body }</div>
-            <div>{ post.likesCount }</div>
-        </div>  
+        <List.Item
+            key={data.id}
+            actions={[
+            <IconText icon={LikeOutlined} text={data.likesCount} key="list-vertical-like-o" />,
+            ]}
+        >
+            <List.Item.Meta
+            title={<p>{data.title}</p>}
+            />
+            {data.body}
+        </List.Item>
     )
     
-}
+};
 
 export default PostPreview
