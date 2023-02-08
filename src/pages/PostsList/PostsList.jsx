@@ -35,7 +35,7 @@ const PostsList = () => {
         <List
           itemLayout="vertical"
           size="large"
-          dataSource={posts}
+          dataSource={ posts }
           renderItem={(item) => (
             <PostPreview data={item}/>
           )}

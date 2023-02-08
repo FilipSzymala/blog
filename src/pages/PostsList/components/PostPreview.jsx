@@ -7,7 +7,12 @@ const IconText = ({ icon, text }) => (
       {React.createElement(icon)}
       {text}
     </Space>
-);
+)
+
+const shortenPostBody = (postBody) => {
+    return postBody.split(".", 2).join(".") + "."
+}
+
 const PostPreview = ( { data } ) => {
     return (
         <List.Item
@@ -19,10 +24,10 @@ const PostPreview = ( { data } ) => {
             <List.Item.Meta
             title={<p>{data.title}</p>}
             />
-            {data.body}
+            {shortenPostBody(data.body)}
         </List.Item>
     )
     
-};
+}
 
 export default PostPreview
