@@ -1,5 +1,6 @@
 import { LikeOutlined } from '@ant-design/icons';
-import { List, Space } from 'antd';
+import { List, Space, Typography  } from 'antd';
+const { Paragraph } = Typography;
 import React from 'react';
   
 const IconText = ({ icon, text }) => (
@@ -9,9 +10,9 @@ const IconText = ({ icon, text }) => (
     </Space>
 )
 
-const shortenPostBody = (postBody) => {
-    return postBody.split(".", 2).join(".") + "."
-}
+// const shortenPostBody = (postBody) => {
+//     return postBody.split(".", 2).join(".") + "."
+// }
 
 const PostPreview = ( { data } ) => {
     return (
@@ -24,7 +25,9 @@ const PostPreview = ( { data } ) => {
             <List.Item.Meta
             title={<p>{data.title}</p>}
             />
-            {shortenPostBody(data.body)}
+            <Paragraph ellipsis={{
+                rows: 2
+            }}>{data.body}</Paragraph>
         </List.Item>
     )
     
