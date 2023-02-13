@@ -1,4 +1,4 @@
-import { Spin } from "antd"
+import { List, Spin } from "antd"
 import { useEffect, useState } from "react"
 import { PostPreview } from "./components"
 const PostsList = () => {
@@ -24,14 +24,22 @@ const PostsList = () => {
     <div>
       {loading ? ( <Spin /> ) :
       (
-        <div>
-        {
-          posts.map((post) => (
-            // <div key={ post.id }>{ post.title }</div>
-            <PostPreview key={ post.id } post={ post } />
-          )
-        )}
-        </div>
+        // <div>
+        // {
+        //   posts.map((post) => (
+        //     // <div key={ post.id }>{ post.title }</div>
+        //     <PostPreview key={ data.id } data={ post } />
+        //   ))
+        // }
+        // </div>
+        <List
+          itemLayout="vertical"
+          size="large"
+          dataSource={ posts }
+          renderItem={(item) => (
+            <PostPreview data={item}/>
+          )}
+        />
       )}
     </div>
   )
